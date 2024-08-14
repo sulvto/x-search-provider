@@ -1,0 +1,8 @@
+{
+    "name": "X Search Provider",
+    "description": "A GNOME Shell extension",
+    "uuid": "x-search-provider@qinchao.me",
+    "url": "https://github.com/sulvto/x-search-provider",
+    "settings-schema": "org.gnome.shell.extensions.x-search-provider",
+    "shell-version": ["46"]
+}

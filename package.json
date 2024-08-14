@@ -1,0 +1,45 @@
+{
+    "name": "x-search-provider",
+    "version": "0.0.0",
+    "description": "A TypeScript GNOME Extension",
+    "type": "module",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sulvto/x-search-provider.git"
+    },
+    "author": "sulvto <sulvto@outlook.com>",
+    "license": "LGPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/sulvto/x-search-provider/issues"
+    },
+    "homepage": "https://github.com/sulvto/x-search-provider#readme",
+    "sideEffects": false,
+    "config": {
+        "domain": "qinchao.me"
+    },
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint . -c eslint.config.js",
+        "lint:fix": "eslint --fix . -c eslint.config.js",
+        "prettier": "prettier --check .",
+        "prettier:fix": "prettier --write .",
+        "clean": "rm -rf dist ${npm_package_name}.zip",
+        "pack": "npm run clean && npm run build && cp metadata.json dist && cp -r schemas dist && cd dist && zip -9r ../${npm_package_name}.zip .",
+        "install": "touch ~/.local/share/gnome-shell/extensions/${npm_package_name}@${npm_package_config_domain} && rm -rf ~/.local/share/gnome-shell/extensions/${npm_package_name}@${npm_package_config_domain} && mv dist ~/.local/share/gnome-shell/extensions/${npm_package_name}@${npm_package_config_domain}",
+        "setup": "npm run pack && glib-compile-schemas ./dist/schemas && npm run install"
+    },
+    "devDependencies": {
+        "eslint": "^9.9.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-jsdoc": "^50.0.1",
+        "eslint-plugin-prettier": "^5.2.1",
+        "lint-staged": "^15.2.8",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.1.0"
+    },
+    "dependencies": {
+        "@girs/gjs": "^4.0.0-beta.14",
+        "@girs/gnome-shell": "^46.0.2"
+    }
+}
